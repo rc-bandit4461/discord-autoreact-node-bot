@@ -15,7 +15,7 @@ function global_react(message,user){
 function pattern_react(message,user){
     // console.log("PATTERN REACT");
     for(reaction of user.reactions){
-        for(pattern of reaction.patterns) if (message.content.toLowerCase().includes(pattern)) {
+        for(pattern of reaction.patterns) if (message.content.toLowerCase().replace(/( |  )/g,"").includes(pattern)) {
             for(const emoji_id of reaction.emojis){
                 const emoji = message.guild.emojis.cache.get(emoji_id);
                 if(emoji != undefined)
@@ -30,13 +30,16 @@ bot.on("ready", function () {
 });
 
 bot.on("message", (message) => {
+    let users = config.users; // adding global configuration as a user
+    users.push(config.global); 
     for (const user of config.users) {
-        if (user.id != message.author.id) continue;
-        if (user.to_all_channels || user.channels.includes(message.channel.id)) {
-            if (user.global_pattern == true) global_react(message, user);
-            if(user.special_patterns == true) pattern_react(message,user);
-        }        
-        return;
+        if (user.id=="global" || user.id == message.author.id){
+            if (user.to_all_channels || user.channels.includes(message.channel.id)) {
+                if (user.global_pattern == true) global_react(message, user);
+                if(user.special_patterns == true) pattern_react(message,user);
+            }
+            return;
+        }
     }
 });
 

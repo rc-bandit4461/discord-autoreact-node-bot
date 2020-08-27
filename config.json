@@ -1,5 +1,23 @@
 {
-	"token": "",
+    "token": "",
+    "global":{
+        "id":"global",
+        "emojis": ["699544201452584971"],
+        "channels": ["690648368451682347"],   
+        "to_all_channels":true,
+        "global_pattern":false,
+        "special_patterns":true,  
+        "reactions":[
+            {
+                "patterns":["talkhis","tal5is"],
+                "emojis":[
+                    "699544201452584971",
+                    "707359443767001178",
+                    "701585034204938321"
+                ]
+            }
+        ]
+    },
 	"users": [
 		{
 			"id": "522193697182449674",
@@ -21,6 +39,24 @@
         },
         {
 			"id": "511870856218148864",
+			"emojis": ["699544201452584971"],
+            "channels": ["690648368451682347"],
+            "to_all_channels":true,
+            "global_pattern":false,
+            "special_patterns":true,
+            "reactions":[
+                {
+                    "patterns":["talkhis","tal5is"],
+                    "emojis":[
+                        "699544201452584971",
+                        "707359443767001178",
+                        "701585034204938321"
+                    ]
+                }
+            ]
+        },
+        {
+			"id": "321852130367504386",
 			"emojis": ["699544201452584971"],
             "channels": ["690648368451682347"],
             "to_all_channels":true,
