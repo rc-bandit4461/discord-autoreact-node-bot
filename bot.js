@@ -34,13 +34,14 @@ bot.on("message", (message) => {
     users.push(config.global); 
     for (const user of config.users) {
         if (user.id=="global" || user.id == message.author.id){
-            if (user.to_all_channels || user.channels.includes(message.channel.id)) {
-                if (user.global_pattern == true) global_react(message, user);
-                if(user.special_patterns == true) pattern_react(message,user);
+            if (user.to_all_channels || user.channels.includes(message.channel.id)) { 
+// if to_all_channels is enabled, checking which channel it is will be omitted
+                if (user.global_pattern == true) global_react(message, user); // if global pattern is enabled, the message will get the global "normal reaction"
+                if(user.special_patterns == true) pattern_react(message,user); // if its a "special user" or a "special case", the bot will add more reactions that are specified
             }
             return;
         }
     }
 });
 
-bot.login(config.token);
+bot.login(config.token); // make sure to place your bot token in config
