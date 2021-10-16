@@ -27,17 +27,18 @@ function pattern_react(message,user){
 }
 bot.on("ready", function () {
     console.log("Ready!");
+    let users = config.users;
+    if(config.global.global_pattern == true || config.global.special_patterns == true) 
+        users.push(config.global); // adding global configuration as a user
 });
 
 bot.on("message", (message) => {
-    let users = config.users; // adding global configuration as a user
-    users.push(config.global); 
-    for (const user of config.users) {
-        if (user.id=="global" || user.id == message.author.id){
+    for (const user of config.users) { 
+        if (user.id == "global" || user.id == message.author.id){ //user has special treats!
             if (user.to_all_channels || user.channels.includes(message.channel.id)) { 
 // if to_all_channels is enabled, checking which channel it is will be omitted
-                if (user.global_pattern == true) global_react(message, user); // if global pattern is enabled, the message will get the global "normal reaction"
-                if(user.special_patterns == true) pattern_react(message,user); // if its a "special user" or a "special case", the bot will add more reactions that are specified
+                if (user.global_pattern === true) global_react(message, user); // if global pattern is enabled, the message will get the global "normal reaction"
+                if(user.special_patterns === true) pattern_react(message,user); // if its a "special user" or a "special case", the bot will add more reactions that are specified
             }
             return;
         }
