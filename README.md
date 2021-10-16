@@ -1,6 +1,6 @@
 # discord-autoreact-node-bot
  Autoreact discord bot. It has a config file where you can specify the emoji IDs you want in each pattern found. A global config is available as well as a per user basis.
- No flashy database used, only a STATIC config file.
+ No flashy database used, only a STATIC config file. It is for small "private" servers for you and your friends. 
  Here is an explanation of the config file.
 ```javascript
 {
